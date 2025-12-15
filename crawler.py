@@ -4,10 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
 
-
-# =========================
 # TASK 6: Retry logic
-# =========================
+
 def fetch_page(url, retries=3):
     for attempt in range(retries):
         try:
@@ -22,11 +20,8 @@ def fetch_page(url, retries=3):
             time.sleep(1)
     return None
 
-
-# =========================
 # TASK 3 + TASK 4
 # Filter useless links + same-domain only
-# =========================
 def extract_links(base_url, html, seed_domain):
     soup = BeautifulSoup(html, "html.parser")
     links = set()
@@ -51,12 +46,10 @@ def extract_links(base_url, html, seed_domain):
 
     return links
 
-
-# =========================
 # TASK 1: Basic crawler
 # TASK 2: Save pages in pages/
 # TASK 5: Save visited URLs
-# =========================
+
 def crawl(seed_url, max_pages=10):
     print(f"\nStarting crawl for: {seed_url}")
 
@@ -115,9 +108,8 @@ def crawl(seed_url, max_pages=10):
     print(f"Duplicate URLs   : 0 (fully filtered)")
     print("================================")
 
-
-# =========================
 # Program start
-# =========================
+
 if __name__ == "__main__":
     crawl("https://coursera.org", max_pages=30)
+
